@@ -142,12 +142,13 @@ header.scrolled{background:rgba(6,11,24,.85);backdrop-filter:blur(14px);border-b
 .track{display:flex;gap:18px;width:max-content;animation:scroll 32s linear infinite}
 .marquee:hover .track{animation-play-state:paused}
 @keyframes scroll{to{transform:translateX(50%)}}
-.track{gap:22px;padding:14px 0}
-.client{flex-shrink:0;width:170px;height:170px;border-radius:22px;background:#fff;padding:14px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.08);box-shadow:0 14px 34px -16px rgba(0,0,0,.6);transition:transform .35s,box-shadow .35s}
+.marquee{max-width:980px;margin-inline:auto;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{gap:18px;padding:14px 0;animation-duration:40s}
+.client{flex-shrink:0;width:140px;height:140px;border-radius:20px;background:#fff;padding:12px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.08);box-shadow:0 14px 34px -16px rgba(0,0,0,.6);transition:transform .35s,box-shadow .35s}
 .client img{width:100%;height:100%;object-fit:contain;filter:grayscale(1) contrast(1.05);opacity:.78;transition:filter .35s,opacity .35s}
 .client:hover{transform:translateY(-6px);box-shadow:0 22px 44px -14px rgba(20,224,176,.45)}
 .client:hover img{filter:none;opacity:1}
-@media (max-width:760px){.client{width:130px;height:130px;border-radius:18px;padding:10px}}
+@media (max-width:760px){.client{width:110px;height:110px;border-radius:16px;padding:8px}}
 
 /* about */
 .about{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:center}
@@ -315,8 +316,8 @@ footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-s
       <h2>עסקים שכבר <span class="grad-text">סומכים עלינו</span></h2>
       <p>חברות טכנולוגיה, קרנות השקעה, משרדי עורכי דין וחברות שירותים שאנחנו מלווים במחשוב ובסייבר.</p>
     </div>
+    <div class="marquee reveal"><div class="track" id="track"></div></div>
   </div>
-  <div class="marquee reveal"><div class="track" id="track"></div></div>
 </section>
 
 <!-- SERVICES -->
@@ -498,7 +499,7 @@ const services = [
 ];
 const clients = [
   ['FORTISSIMO-CAPITAL-SMALL-LOGO','קרן פורטיסימו'],['RSIP-VISION-SMALL-LOGO','RSIP Vision'],['VEGA-SMALL-LOGO','וגה משאבי אנוש'],
-  ['COHEN-YAKOLEV-SMALL-LOGO','כהן-יקולב'],['ADY-KAPLAN-LOGO','עדי קפלן ושות׳, משרד עורכי דין'],['RADVIEW-LOGO','ראדויו'],['YOOKIDOO-LOGO','יוקידו'],['GK8-LOGO','GK8'],['DATA-JCE-LOGO','דטא ג׳י סי אי']];
+  ['COHEN-YAKOLEV-SMALL-LOGO','כהן-יקולב'],['ADY-KAPLAN-LOGO','עדי קפלן ושות׳, משרד עורכי דין'],['BAT-MELECH-LOGO','עמותת בת מלך'],['RADVIEW-LOGO','ראדויו'],['YOOKIDOO-LOGO','יוקידו'],['GK8-LOGO','GK8'],['DATA-JCE-LOGO','דטא ג׳י סי אי']];
 
 // ---- services render + tabs
 const grid = document.getElementById('svcGrid');
