@@ -142,7 +142,12 @@ header.scrolled{background:rgba(6,11,24,.85);backdrop-filter:blur(14px);border-b
 .track{display:flex;gap:18px;width:max-content;animation:scroll 32s linear infinite}
 .marquee:hover .track{animation-play-state:paused}
 @keyframes scroll{to{transform:translateX(50%)}}
-.client{padding:20px 34px;border:1px solid var(--line);border-radius:14px;background:var(--card);font-weight:800;font-size:1.1rem;white-space:nowrap;color:#c9d4ee}
+.track{gap:22px;padding:14px 0}
+.client{flex-shrink:0;width:170px;height:170px;border-radius:22px;background:#fff;padding:14px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.08);box-shadow:0 14px 34px -16px rgba(0,0,0,.6);transition:transform .35s,box-shadow .35s}
+.client img{width:100%;height:100%;object-fit:contain;filter:grayscale(1) contrast(1.05);opacity:.78;transition:filter .35s,opacity .35s}
+.client:hover{transform:translateY(-6px);box-shadow:0 22px 44px -14px rgba(20,224,176,.45)}
+.client:hover img{filter:none;opacity:1}
+@media (max-width:760px){.client{width:130px;height:130px;border-radius:18px;padding:10px}}
 
 /* about */
 .about{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:center}
@@ -229,9 +234,9 @@ footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-s
     </a>
     <ul class="nav-links" id="links">
       <li><a href="#worlds">מי אנחנו</a></li>
+      <li><a href="#clients">לקוחות</a></li>
       <li><a href="#services">שירותים</a></li>
       <li><a href="#cyberdays">CyberDays</a></li>
-      <li><a href="#clients">לקוחות</a></li>
       <li><a href="#about">אודות</a></li>
       <li><a href="#contact">צור קשר</a></li>
     </ul>
@@ -300,6 +305,18 @@ footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-s
       </div>
     </div>
   </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients" style="padding:20px 0 100px">
+  <div class="container">
+    <div class="sec-head reveal" style="margin-bottom:44px">
+      <span class="eyebrow">לקוחות</span>
+      <h2>עסקים שכבר <span class="grad-text">סומכים עלינו</span></h2>
+      <p>חברות טכנולוגיה, קרנות השקעה, משרדי עורכי דין וחברות שירותים שאנחנו מלווים במחשוב ובסייבר.</p>
+    </div>
+  </div>
+  <div class="marquee reveal"><div class="track" id="track"></div></div>
 </section>
 
 <!-- SERVICES -->
@@ -371,17 +388,6 @@ footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-s
       <div class="why-card reveal"><div class="em">🌐</div><h4>שותפים מובילים</h4><p>עובדים עם ספקים מובילים בארץ ובעולם כדי להביא לעסק קטן פתרונות ברמה של ארגון גדול.</p></div>
     </div>
   </div>
-</section>
-
-<!-- CLIENTS -->
-<section id="clients" style="background:var(--bg2);padding:90px 0">
-  <div class="container">
-    <div class="sec-head reveal" style="margin-bottom:40px">
-      <span class="eyebrow">לקוחות</span>
-      <h2>עסקים שסומכים עלינו</h2>
-    </div>
-  </div>
-  <div class="marquee reveal"><div class="track" id="track"></div></div>
 </section>
 
 <!-- ABOUT -->
@@ -490,7 +496,9 @@ const services = [
   {t:'cy',i:'grad',h:'הדרכות ומודעות עובדים',p:'הדרכות קבוצתיות ואישיות, מבדקי פישינג תקופתיים ולומדות מקוונות שנשלחות במייל.'},
   {t:'cy',i:'user',h:'הטמעת מדיניות סייבר',p:'מדיניות אבטחה שנבנית לפי התקנים המובילים בארץ ובעולם, עם ליווי עד שכל הפערים נסגרים.'}
 ];
-const clients = ['קרן פורטיסימו','RSIP Vision','וגה משאבי אנוש','כהן-יקולב','ראדויו','יוקידו','GK8','דטא ג׳י סי אי'];
+const clients = [
+  ['FORTISSIMO-CAPITAL-SMALL-LOGO','קרן פורטיסימו'],['RSIP-VISION-SMALL-LOGO','RSIP Vision'],['VEGA-SMALL-LOGO','וגה משאבי אנוש'],
+  ['COHEN-YAKOLEV-SMALL-LOGO','כהן-יקולב'],['RADVIEW-LOGO','ראדויו'],['YOOKIDOO-LOGO','יוקידו'],['GK8-LOGO','GK8'],['DATA-JCE-LOGO','דטא ג׳י סי אי']];
 
 // ---- services render + tabs
 const grid = document.getElementById('svcGrid');
@@ -509,7 +517,8 @@ document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
 }));
 
 // ---- clients marquee
-document.getElementById('track').innerHTML = [...clients,...clients].map(c=>`<div class="client">${c}</div>`).join('');
+document.getElementById('track').innerHTML = [...clients,...clients].map(([f,n],i)=>
+  `<div class="client"${i>=clients.length?' aria-hidden="true"':''}><img src="assets/clients/${f}.jpg" alt="${n}" title="${n}" width="250" height="250"></div>`).join('');
 
 // ---- typed text
 const phrases=['תמיכה שוטפת לעסק','גיבוי שבאמת עובד','CISO ו-DPO כשירות','עובדים שמזהים פישינג','עמידה בחוק הגנת הפרטיות'];
