@@ -43,6 +43,12 @@ header.scrolled{background:rgba(6,11,24,.85);backdrop-filter:blur(14px);border-b
 .logo{display:flex;align-items:center;gap:12px;font-weight:900;font-size:1.35rem}
 .logo-mark{width:40px;height:40px;border-radius:11px;background:var(--grad);display:grid;place-items:center;color:#04101f}
 .logo small{display:block;font-size:.7rem;font-weight:500;color:var(--muted);line-height:1}
+.brand-pill{display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:7px 14px;box-shadow:0 8px 24px -10px rgba(20,224,176,.45),0 0 0 1px rgba(255,255,255,.6);transition:transform .25s}
+.brand-pill:hover{transform:translateY(-1px)}
+.brand-pill img{display:block;width:auto}
+.brand-pill .lg-p{height:36px}
+.brand-pill .lg-c{height:44px;margin-block:-4px}
+.brand-pill .sep{width:1px;align-self:stretch;background:#d5dae3;margin-block:4px}
 .nav-links{display:flex;gap:30px;list-style:none;font-weight:500}
 .nav-links a{color:var(--muted);transition:.2s}
 .nav-links a:hover{color:var(--text)}
@@ -63,7 +69,13 @@ header.scrolled{background:rgba(6,11,24,.85);backdrop-filter:blur(14px);border-b
 
 .merge{position:relative;aspect-ratio:1;max-width:440px;margin-inline:auto;width:100%}
 .orb{position:absolute;width:58%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;font-weight:900;font-size:1.5rem;backdrop-filter:blur(4px)}
-.orb span{display:block;font-size:.85rem;font-weight:500;color:var(--muted)}
+.orb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.orb span{display:block;font-size:.9rem;font-weight:700;color:var(--text);letter-spacing:.02em}
+.orb .disc{width:70%;aspect-ratio:1;border-radius:50%;background:#fff;display:grid;place-items:center;padding:8%;margin-top:12px;transition:transform .4s}
+.orb-it .disc{box-shadow:0 0 0 6px rgba(59,130,246,.18),0 0 40px rgba(59,130,246,.45)}
+.orb-cy .disc{box-shadow:0 0 0 6px rgba(20,224,176,.18),0 0 40px rgba(20,224,176,.45)}
+.orb .disc img{width:100%;height:auto;display:block}
+.orb:hover .disc{transform:scale(1.06)}
 .orb-it{top:8%;right:0;border:2px solid rgba(59,130,246,.6);background:radial-gradient(circle,rgba(59,130,246,.22),rgba(59,130,246,.04));animation:floatA 6s ease-in-out infinite}
 .orb-cy{bottom:8%;left:0;border:2px solid rgba(20,224,176,.6);background:radial-gradient(circle,rgba(20,224,176,.22),rgba(20,224,176,.04));animation:floatB 6s ease-in-out infinite}
 .orb-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:92px;height:92px;border-radius:24px;background:var(--grad);display:grid;place-items:center;color:#04101f;box-shadow:0 0 60px rgba(20,224,176,.55);z-index:3;animation:spin 14s linear infinite}
@@ -216,6 +228,9 @@ footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-s
   .nav-links.open{max-height:420px}
   .nav-links a{display:block;padding:16px 24px}
   .menu-btn{display:block}
+  .brand-pill{padding:6px 10px;gap:9px}
+  .brand-pill .lg-p{height:28px}
+  .brand-pill .lg-c{height:34px}
   .nav .btn{display:none}
   section{padding:80px 0}
   .panel.active,.why,.row{grid-template-columns:1fr}
@@ -229,9 +244,10 @@ footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-s
 
 <header id="hdr">
   <div class="container nav">
-    <a href="#top" class="logo" aria-label="פדנטק – לדף הבית">
-      <span class="logo-mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8 12h8M12 8v8"/></svg></span>
-      <span>פדנטק<small>IT &amp; Cyber · CyberV</small></span>
+    <a href="#top" class="brand-pill" aria-label="פדנטק ו-CyberV – לדף הבית">
+      <img src="assets/brand/pedantech-logo.png" alt="PedanTech ניהול מחשוב לעסקים" class="lg-p" width="335" height="90">
+      <span class="sep" aria-hidden="true"></span>
+      <img src="assets/brand/cyberv-logo.webp" alt="CyberV" class="lg-c" width="2000" height="807">
     </a>
     <ul class="nav-links" id="links">
       <li><a href="#worlds">מי אנחנו</a></li>
@@ -263,8 +279,8 @@ footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-s
       </div>
     </div>
     <div class="merge" aria-hidden="true">
-      <div class="orb orb-it"><div>IT<span>ניהול מחשוב</span></div></div>
-      <div class="orb orb-cy"><div>Cyber<span>אבטחת מידע</span></div></div>
+      <div class="orb orb-it"><div class="disc"><img src="assets/brand/pedantech-logo.png" alt=""></div><span>ניהול מחשוב</span></div>
+      <div class="orb orb-cy"><div class="disc"><img src="assets/brand/cyberv-logo.webp" alt=""></div><span>אבטחת מידע</span></div>
       <div class="orb-core"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
     </div>
   </div>
@@ -458,7 +474,10 @@ footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-s
 
 <footer>
   <div class="container foot">
-    <div class="logo" style="font-size:1.1rem"><span class="logo-mark" style="width:32px;height:32px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg></span>פדנטק · ניהול מחשוב וסייבר לעסקים</div>
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <a href="#top" class="brand-pill" aria-label="לראש העמוד"><img src="assets/brand/pedantech-logo.png" alt="PedanTech" class="lg-p" width="335" height="90"><span class="sep" aria-hidden="true"></span><img src="assets/brand/cyberv-logo.webp" alt="CyberV" class="lg-c" width="2000" height="807"></a>
+      <span>ניהול מחשוב וסייבר לעסקים</span>
+    </div>
     <div>© <span id="yr"></span> Pedantech &amp; CyberV · כל הזכויות שמורות · <a href="#">הצהרת נגישות</a> · <a href="#">מדיניות פרטיות</a></div>
   </div>
 </footer>
