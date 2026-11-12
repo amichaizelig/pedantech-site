@@ -146,8 +146,20 @@ header.scrolled{background:rgba(6,11,24,.85);backdrop-filter:blur(14px);border-b
 
 /* about */
 .about{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:center}
-.avatar{aspect-ratio:1;border-radius:28px;background:var(--grad);display:grid;place-items:center;font-size:6rem;font-weight:900;color:#04101f;position:relative;max-width:380px}
-.avatar::after{content:"";position:absolute;inset:-14px;border:1px dashed rgba(20,224,176,.4);border-radius:36px}
+.portrait{position:relative;max-width:400px;width:100%;margin:0 auto}
+.portrait .chip b{text-align:right}
+.portrait::before{content:"";position:absolute;inset:-16px;border:1px dashed rgba(20,224,176,.4);border-radius:38px;z-index:0}
+.portrait::after{content:"";position:absolute;inset:auto -40px -40px auto;width:70%;height:70%;background:radial-gradient(circle,rgba(20,224,176,.35),transparent 65%);filter:blur(30px);z-index:0}
+.portrait .frame{position:relative;z-index:1;border-radius:28px;padding:3px;background:var(--grad);box-shadow:0 30px 70px -25px rgba(20,224,176,.45)}
+.portrait .frame div{border-radius:25px;overflow:hidden;position:relative;aspect-ratio:4/5;background:#e9ebee}
+.portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%;filter:contrast(1.04) saturate(1.05);transition:transform .8s}
+.portrait:hover img{transform:scale(1.035)}
+.portrait .frame div::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(6,11,24,.85) 100%),linear-gradient(135deg,rgba(59,130,246,.12),rgba(20,224,176,.08));pointer-events:none}
+.portrait .name{position:absolute;z-index:2;bottom:22px;inset-inline:22px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.portrait .name b{display:block;font-size:1.35rem;font-weight:900;line-height:1.2}
+.portrait .name span{font-size:.9rem;color:#c9d4ee}
+.portrait .chip{position:absolute;z-index:2;top:22px;inset-inline-start:-18px;background:rgba(6,11,24,.85);backdrop-filter:blur(8px);border:1px solid rgba(20,224,176,.4);border-radius:14px;padding:10px 16px;font-size:.85rem;color:var(--muted);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.portrait .chip b{display:block;font-size:1.3rem;color:var(--cyber);line-height:1.1}
 .about h2{font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:900;margin:14px 0}
 .about p{color:var(--muted);margin-bottom:14px;font-size:1.06rem}
 .about .sig{font-weight:800;color:var(--text)}
@@ -190,7 +202,8 @@ footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-s
   .stats-grid{grid-template-columns:1fr 1fr}
   .stat:nth-child(3){border:0}
   .stat:nth-child(n+3){border-top:1px solid var(--line)}
-  .avatar{max-width:260px;margin-inline:auto;font-size:4.5rem}
+  .portrait{max-width:320px;margin-bottom:10px}
+  .portrait .chip{inset-inline-start:-8px}
 }
 @media (max-width:760px){
   .nav-links{position:fixed;top:76px;inset-inline:0;flex-direction:column;gap:0;background:rgba(6,11,24,.97);border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:.35s}
@@ -374,7 +387,11 @@ footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-s
 <!-- ABOUT -->
 <section id="about">
   <div class="container about">
-    <div class="avatar reveal" aria-hidden="true">ע״ז</div>
+    <figure class="portrait reveal">
+      <div class="frame"><div><img src="assets/amichai.jpg" width="640" height="800" alt="עמיחי זליג, מייסד ומנכ״ל פדנטק" loading="lazy"></div></div>
+      <div class="chip"><b dir="ltr">25+</b>שנות ניסיון</div>
+      <figcaption class="name"><div><b>עמיחי זליג</b><span>מייסד ומנכ״ל · Pedantech &amp; CyberV</span></div></figcaption>
+    </figure>
     <div class="reveal">
       <span class="eyebrow">מי עומד מאחורינו</span>
       <h2>עמיחי זליג, <span class="grad-text">מייסד ומנכ״ל</span></h2>
