@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>פדנטק | ניהול מחשוב וסייבר לעסקים</title>
+<meta name="description" content="פדנטק ו-CyberV – ניהול IT, אבטחת מידע ושירותי סייבר מנוהלים לעסקים קטנים ובינוניים. מאז 2007.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060b18; --bg2:#0b1326; --card:#0f1a33; --line:rgba(120,160,255,.14);
+  --text:#e8eefc; --muted:#9aa8c7;
+  --it:#3b82f6; --cyber:#14e0b0; --grad:linear-gradient(120deg,#3b82f6 0%,#14e0b0 100%);
+  --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Heebo',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.container{width:min(1180px,100% - 32px);margin-inline:auto}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:700;letter-spacing:.04em;color:var(--cyber);
+  border:1px solid rgba(20,224,176,.3);background:rgba(20,224,176,.07);padding:6px 14px;border-radius:99px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cyber);box-shadow:0 0 10px var(--cyber);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.3}}
+section{padding:110px 0;position:relative}
+.sec-head{text-align:center;max-width:720px;margin:0 auto 60px}
+.sec-head h2{font-size:clamp(2rem,4vw,2.9rem);font-weight:900;line-height:1.2;margin:16px 0 14px}
+.sec-head p{color:var(--muted);font-size:1.1rem}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:12px;font-weight:700;font-size:1rem;transition:.25s;cursor:pointer;border:0;font-family:inherit}
+.btn-primary{background:var(--grad);color:#04101f;box-shadow:0 10px 30px -10px rgba(20,224,176,.6)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px -10px rgba(20,224,176,.8)}
+.btn-ghost{border:1px solid var(--line);color:var(--text);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{border-color:var(--cyber);color:var(--cyber)}
+
+/* header */
+header{position:fixed;inset:0 0 auto;z-index:50;transition:.3s}
+header.scrolled{background:rgba(6,11,24,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:900;font-size:1.35rem}
+.logo-mark{width:40px;height:40px;border-radius:11px;background:var(--grad);display:grid;place-items:center;color:#04101f}
+.logo small{display:block;font-size:.7rem;font-weight:500;color:var(--muted);line-height:1}
+.nav-links{display:flex;gap:30px;list-style:none;font-weight:500}
+.nav-links a{color:var(--muted);transition:.2s}
+.nav-links a:hover{color:var(--text)}
+.menu-btn{display:none;background:none;border:0;color:var(--text);cursor:pointer}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:130px 0 80px;overflow:hidden}
+#net{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(59,130,246,.18),transparent 55%),radial-gradient(ellipse at 20% 70%,rgba(20,224,176,.14),transparent 50%);pointer-events:none}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,6.2vw,4.8rem);font-weight:900;line-height:1.08;margin:22px 0 22px;letter-spacing:-.01em}
+.hero h1 .line2{display:block}
+.hero .sub{font-size:clamp(1.15rem,2vw,1.4rem);color:var(--muted);margin-bottom:12px}
+.hero .sub strong{color:var(--text)}
+.typed{color:var(--cyber);font-weight:700;min-height:1.7em}
+.typed::after{content:"|";animation:pulse 1s infinite;margin-inline-start:2px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+
+.merge{position:relative;aspect-ratio:1;max-width:440px;margin-inline:auto;width:100%}
+.orb{position:absolute;width:58%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;font-weight:900;font-size:1.5rem;backdrop-filter:blur(4px)}
+.orb span{display:block;font-size:.85rem;font-weight:500;color:var(--muted)}
+.orb-it{top:8%;right:0;border:2px solid rgba(59,130,246,.6);background:radial-gradient(circle,rgba(59,130,246,.22),rgba(59,130,246,.04));animation:floatA 6s ease-in-out infinite}
+.orb-cy{bottom:8%;left:0;border:2px solid rgba(20,224,176,.6);background:radial-gradient(circle,rgba(20,224,176,.22),rgba(20,224,176,.04));animation:floatB 6s ease-in-out infinite}
+.orb-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:92px;height:92px;border-radius:24px;background:var(--grad);display:grid;place-items:center;color:#04101f;box-shadow:0 0 60px rgba(20,224,176,.55);z-index:3;animation:spin 14s linear infinite}
+.orb-core svg{animation:spin 14s linear infinite reverse}
+@keyframes floatA{50%{transform:translate(-14px,14px)}}
+@keyframes floatB{50%{transform:translate(14px,-14px)}}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.orb-core svg{transform-origin:center}
+
+/* stats */
+.stats{padding:0;margin-top:-40px;z-index:3}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.stat{padding:32px 20px;text-align:center;border-inline-start:1px solid var(--line)}
+.stat:first-child{border:0}
+.stat b{display:block;font-size:2.6rem;font-weight:900;line-height:1.1}
+.stat span{color:var(--muted);font-size:.95rem}
+
+/* intro two worlds */
+.worlds{display:grid;grid-template-columns:1fr auto 1fr;gap:26px;align-items:stretch}
+.world{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:38px;position:relative;overflow:hidden}
+.world::before{content:"";position:absolute;inset:0 0 auto;height:4px}
+.world.it::before{background:var(--it)} .world.cy::before{background:var(--cyber)}
+.world h3{font-size:1.6rem;font-weight:800;margin:14px 0 8px}
+.world .tag{font-size:.85rem;font-weight:700}
+.world.it .tag{color:var(--it)} .world.cy .tag{color:var(--cyber)}
+.world p{color:var(--muted)}
+.world ul{list-style:none;margin-top:18px;display:grid;gap:8px}
+.world li{display:flex;gap:10px;align-items:center}
+.world li::before{content:"✓";font-weight:900;font-size:.85rem;width:22px;height:22px;border-radius:6px;display:grid;place-items:center;flex-shrink:0}
+.world.it li::before{background:rgba(59,130,246,.15);color:var(--it)}
+.world.cy li::before{background:rgba(20,224,176,.15);color:var(--cyber)}
+.plus{display:grid;place-items:center;font-size:2.4rem;font-weight:900}
+.plus div{width:64px;height:64px;border-radius:50%;background:var(--grad);color:#04101f;display:grid;place-items:center}
+
+/* services */
+.tabs{display:flex;justify-content:center;gap:10px;margin-bottom:40px;flex-wrap:wrap}
+.tab{padding:12px 26px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--muted);font:700 1rem 'Heebo',sans-serif;cursor:pointer;transition:.25s}
+.tab.active{background:var(--grad);color:#04101f;border-color:transparent}
+.panel{display:none;grid-template-columns:repeat(3,1fr);gap:22px}
+.panel.active{display:grid;animation:fade .5s}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px;transition:.3s;position:relative}
+.svc:hover{transform:translateY(-6px);border-color:rgba(20,224,176,.45);box-shadow:0 20px 50px -20px rgba(20,224,176,.35)}
+.svc .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;margin-bottom:18px}
+.svc.it .ic{background:rgba(59,130,246,.14);color:var(--it)}
+.svc.cy .ic{background:rgba(20,224,176,.14);color:var(--cyber)}
+.svc h4{font-size:1.2rem;font-weight:800;margin-bottom:8px}
+.svc p{color:var(--muted);font-size:.97rem}
+.svc .badge{position:absolute;top:18px;left:18px;font-size:.72rem;font-weight:800;padding:3px 10px;border-radius:99px;background:rgba(20,224,176,.12);color:var(--cyber)}
+
+/* cyberdays */
+.cd{background:linear-gradient(135deg,#0d1d3d,#082a2a);border:1px solid rgba(20,224,176,.3);border-radius:28px;padding:60px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;overflow:hidden;position:relative}
+.cd h2{font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.15;margin:14px 0}
+.cd p{color:var(--muted);font-size:1.08rem}
+.cd-steps{display:grid;gap:12px;counter-reset:s}
+.cd-step{display:flex;gap:16px;align-items:center;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:16px 20px;counter-increment:s}
+.cd-step::before{content:counter(s);width:34px;height:34px;flex-shrink:0;border-radius:10px;background:var(--grad);color:#04101f;font-weight:900;display:grid;place-items:center}
+
+/* process */
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative}
+.process::before{content:"";position:absolute;top:34px;right:12%;left:12%;height:2px;background:var(--grad);opacity:.35}
+.step{text-align:center;position:relative}
+.step .n{width:68px;height:68px;margin:0 auto 18px;border-radius:50%;background:var(--bg);border:2px solid var(--cyber);display:grid;place-items:center;font-weight:900;font-size:1.4rem;color:var(--cyber)}
+.step h4{font-weight:800;font-size:1.15rem;margin-bottom:6px}
+.step p{color:var(--muted);font-size:.95rem}
+
+/* why */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.why-card{padding:30px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.03),transparent)}
+.why-card h4{font-size:1.15rem;font-weight:800;margin:12px 0 6px}
+.why-card p{color:var(--muted);font-size:.96rem}
+.why-card .em{font-size:1.8rem}
+
+/* clients */
+.marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;gap:18px;width:max-content;animation:scroll 32s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(50%)}}
+.client{padding:20px 34px;border:1px solid var(--line);border-radius:14px;background:var(--card);font-weight:800;font-size:1.1rem;white-space:nowrap;color:#c9d4ee}
+
+/* about */
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:center}
+.avatar{aspect-ratio:1;border-radius:28px;background:var(--grad);display:grid;place-items:center;font-size:6rem;font-weight:900;color:#04101f;position:relative;max-width:380px}
+.avatar::after{content:"";position:absolute;inset:-14px;border:1px dashed rgba(20,224,176,.4);border-radius:36px}
+.about h2{font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:900;margin:14px 0}
+.about p{color:var(--muted);margin-bottom:14px;font-size:1.06rem}
+.about .sig{font-weight:800;color:var(--text)}
+.timeline{display:flex;gap:14px;margin-top:24px;flex-wrap:wrap}
+.timeline div{padding:10px 18px;border-radius:12px;border:1px solid var(--line);background:var(--card);font-size:.92rem}
+.timeline b{color:var(--cyber)}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:40px;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:56px}
+.contact h2{font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:900;line-height:1.2;margin:14px 0}
+.contact .info{display:grid;gap:16px;margin-top:28px}
+.contact .info a,.contact .info div{display:flex;gap:14px;align-items:center;color:var(--muted)}
+.contact .info a:hover{color:var(--cyber)}
+.contact .info i{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(20,224,176,.1);color:var(--cyber);font-style:normal;flex-shrink:0}
+form{display:grid;gap:14px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+input,select,textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--bg2);color:var(--text);font:inherit;outline:none;transition:.2s}
+input:focus,select:focus,textarea:focus{border-color:var(--cyber)}
+textarea{min-height:110px;resize:vertical}
+label.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:.92rem}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.foot a:hover{color:var(--cyber)}
+
+.wa{position:fixed;bottom:24px;left:24px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(37,211,102,.45);transition:.25s}
+.wa:hover{transform:scale(1.08)}
+
+.reveal{opacity:0;transform:translateY(30px);transition:.8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .hero-inner,.cd,.about,.contact{grid-template-columns:1fr}
+  .merge{max-width:320px}
+  .worlds{grid-template-columns:1fr}
+  .plus{padding:0}
+  .panel.active,.why{grid-template-columns:1fr 1fr}
+  .process{grid-template-columns:1fr 1fr;row-gap:40px}
+  .process::before{display:none}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--line)}
+  .avatar{max-width:260px;margin-inline:auto;font-size:4.5rem}
+}
+@media (max-width:760px){
+  .nav-links{position:fixed;top:76px;inset-inline:0;flex-direction:column;gap:0;background:rgba(6,11,24,.97);border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:.35s}
+  .nav-links.open{max-height:420px}
+  .nav-links a{display:block;padding:16px 24px}
+  .menu-btn{display:block}
+  .nav .btn{display:none}
+  section{padding:80px 0}
+  .panel.active,.why,.row{grid-template-columns:1fr}
+  .cd,.contact{padding:30px 22px}
+  .world{padding:28px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="container nav">
+    <a href="#top" class="logo" aria-label="פדנטק – לדף הבית">
+      <span class="logo-mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8 12h8M12 8v8"/></svg></span>
+      <span>פדנטק<small>IT &amp; Cyber · CyberV</small></span>
+    </a>
+    <ul class="nav-links" id="links">
+      <li><a href="#worlds">מי אנחנו</a></li>
+      <li><a href="#services">שירותים</a></li>
+      <li><a href="#cyberdays">CyberDays</a></li>
+      <li><a href="#clients">לקוחות</a></li>
+      <li><a href="#about">אודות</a></li>
+      <li><a href="#contact">צור קשר</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary">לשיחת ייעוץ</a>
+    <button class="menu-btn" id="menuBtn" aria-label="תפריט" aria-expanded="false"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="container hero-inner">
+    <div>
+      <span class="eyebrow">פדנטק + CyberV · מאז 2007</span>
+      <h1>כש-<span class="grad-text">IT</span> ו<span class="grad-text">סייבר</span> נפגשים<span class="line2">אנחנו נכנסים.</span></h1>
+      <p class="sub"><strong>פדנטק – ניהול מחשוב וסייבר לעסקים.</strong> תשתיות, תמיכה ואבטחת מידע תחת קורת גג אחת, לעסקים קטנים ובינוניים.</p>
+      <p class="typed" id="typed" aria-live="polite"></p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">בואו נדבר
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+        <a href="#services" class="btn btn-ghost">לכל השירותים</a>
+      </div>
+    </div>
+    <div class="merge" aria-hidden="true">
+      <div class="orb orb-it"><div>IT<span>ניהול מחשוב</span></div></div>
+      <div class="orb orb-cy"><div>Cyber<span>אבטחת מידע</span></div></div>
+      <div class="orb-core"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid reveal">
+      <div class="stat"><b class="grad-text" data-count="2007">0</b><span>שנת הקמה</span></div>
+      <div class="stat"><b class="grad-text"><span data-count="25">0</span>+</b><span>שנות ניסיון בניהול IT</span></div>
+      <div class="stat"><b class="grad-text">2 ב-1</b><span>מחשוב + סייבר, ספק אחד</span></div>
+      <div class="stat"><b class="grad-text">SMB</b><span>מומחים לעסקים קטנים ובינוניים</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TWO WORLDS -->
+<section id="worlds">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">שני עולמות, צוות אחד</span>
+      <h2>המחשוב שלכם עובד.<br><span class="grad-text">והוא גם מוגן.</span></h2>
+      <p>פדנטק מנהלת את המחשוב בעסקים מאז 2007. CyberV, חברה מקבוצת פדנטק, מתמחה בייעוץ ובניהול אבטחת מידע. עכשיו שתיהן פועלות כגוף אחד, כך שמי שמנהל את התשתית שלכם הוא גם מי שמגן עליה.</p>
+    </div>
+    <div class="worlds">
+      <div class="world it reveal">
+        <span class="tag">Pedantech · IT</span>
+        <h3>ניהול מחשוב לעסקים</h3>
+        <p>הקמה, ניהול, ליווי ותמיכה בפרויקטי מחשוב, עם שירות אישי ובלי התחייבות לספק מסוים.</p>
+        <ul><li>תמיכה שוטפת וניהול IT בהתאמה אישית</li><li>רכש וציוד מחשוב</li><li>גיבוי, אחסון וניהול מסמכים</li><li>ייעוץ למנהלים</li></ul>
+      </div>
+      <div class="plus reveal" aria-hidden="true"><div>+</div></div>
+      <div class="world cy reveal">
+        <span class="tag">CyberV · Cyber</span>
+        <h3>סייבר ואבטחת מידע</h3>
+        <p>שירותי סייבר מנוהלים לעסקים קטנים ובינוניים, לפי התקנים המובילים בארץ ובעולם.</p>
+        <ul><li>CISO ו-DPO כשירות</li><li>סקרי סיכונים ופערים</li><li>הדרכות ומודעות עובדים</li><li>עמידה בחוק הגנת הפרטיות</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--bg2)">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">השירותים שלנו</span>
+      <h2>כל מה שהעסק צריך,<br><span class="grad-text">מהשרת ועד העובד</span></h2>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="all" role="tab" aria-selected="true">הכל</button>
+      <button class="tab" data-tab="it" role="tab" aria-selected="false">ניהול מחשוב</button>
+      <button class="tab" data-tab="cy" role="tab" aria-selected="false">סייבר ואבטחת מידע</button>
+    </div>
+    <div class="panel active" id="svcGrid"></div>
+  </div>
+</section>
+
+<!-- CYBERDAYS -->
+<section id="cyberdays">
+  <div class="container">
+    <div class="cd reveal">
+      <div>
+        <span class="eyebrow">השירות הבולט שלנו</span>
+        <h2><span class="grad-text">CyberDays</span><br>הארגון שלכם מוגן יותר תוך ימים</h2>
+        <p>קמפיין סייבר מרוכז שמתקיים אצלכם במשרד במשך יום אחד או כמה ימים, לפי גודל הארגון. בסופו העובדים מודעים יותר, הנהלים כתובים, הגיבויים נבדקו, ויש בידיכם מסמכים שמראים עמידה בדרישות.</p>
+        <div class="hero-cta"><a href="#contact" class="btn btn-primary" data-subject="CyberDays">לתיאום CyberDays</a></div>
+      </div>
+      <div class="cd-steps">
+        <div class="cd-step">סקר אתר וסריקת מערכות המחשוב</div>
+        <div class="cd-step">הדרכת עובדים לפי רמת הסיכון</div>
+        <div class="cd-step">כתיבת נהלי חברה ותהליכים</div>
+        <div class="cd-step">בדיקה ואימות של הגיבויים</div>
+        <div class="cd-step">תעודות, הסמכות ואישורים</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section style="background:var(--bg2)">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">איך זה עובד</span>
+      <h2>ארבעה שלבים,<br><span class="grad-text">ראש שקט אחד</span></h2>
+    </div>
+    <div class="process">
+      <div class="step reveal"><div class="n">1</div><h4>היכרות וסקר</h4><p>בוחנים את מערכות המחשוב, את סביבת העבודה ואת הנהלים הקיימים.</p></div>
+      <div class="step reveal"><div class="n">2</div><h4>דוח והמלצות</h4><p>מקבלים תמונת מצב ברורה ותוכנית עבודה מתועדפת לפי רמת הסיכון.</p></div>
+      <div class="step reveal"><div class="n">3</div><h4>יישום</h4><p>מקימים ומשדרגים תשתיות, כותבים נהלים ומדריכים את העובדים.</p></div>
+      <div class="step reveal"><div class="n">4</div><h4>ניהול וליווי</h4><p>תמיכה שוטפת, ניטור ומבדקים תקופתיים, עד שכל הפערים נסגרים.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section>
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">למה פדנטק</span>
+      <h2>מכירים את האתגרים<br><span class="grad-text">של עסקים כמו שלכם</span></h2>
+    </div>
+    <div class="why">
+      <div class="why-card reveal"><div class="em">🤝</div><h4>שירות אישי</h4><p>יש לכם איש קשר קבוע שמכיר את העסק, ולא מוקד שירות אנונימי.</p></div>
+      <div class="why-card reveal"><div class="em">🔗</div><h4>כתובת אחת ל-IT ולסייבר</h4><p>לא צריך לתאם בין ספקים או לגלגל אחריות. מי שמנהל את המחשוב אחראי גם על האבטחה.</p></div>
+      <div class="why-card reveal"><div class="em">⚖️</div><h4>אובייקטיביות</h4><p>אנחנו לא קשורים לספק מסוים, ולכן ממליצים רק על מה שמתאים לעסק שלכם.</p></div>
+      <div class="why-card reveal"><div class="em">📜</div><h4>עמידה ברגולציה</h4><p>מתאימים את העסק לחוק הגנת הפרטיות ולתקנים המקובלים, ומלווים מול הרשות להגנת הפרטיות.</p></div>
+      <div class="why-card reveal"><div class="em">🎓</div><h4>הדרכה ומודעות</h4><p>העובדים הם קו ההגנה הראשון, ולכן אנחנו מדריכים, מתרגלים ובודקים אותם באופן קבוע.</p></div>
+      <div class="why-card reveal"><div class="em">🌐</div><h4>שותפים מובילים</h4><p>עובדים עם ספקים מובילים בארץ ובעולם כדי להביא לעסק קטן פתרונות ברמה של ארגון גדול.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients" style="background:var(--bg2);padding:90px 0">
+  <div class="container">
+    <div class="sec-head reveal" style="margin-bottom:40px">
+      <span class="eyebrow">לקוחות</span>
+      <h2>עסקים שסומכים עלינו</h2>
+    </div>
+  </div>
+  <div class="marquee reveal"><div class="track" id="track"></div></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container about">
+    <div class="avatar reveal" aria-hidden="true">ע״ז</div>
+    <div class="reveal">
+      <span class="eyebrow">מי עומד מאחורינו</span>
+      <h2>עמיחי זליג, <span class="grad-text">מייסד ומנכ״ל</span></h2>
+      <p>אני מנהל מערכות IT מאז שנת 2000. ב-2007 הקמתי את פדנטק כדי לתת לעסקים קטנים ובינוניים את רמת השירות והמקצועיות שארגונים גדולים מקבלים.</p>
+      <p>עם השנים ראיתי שמחשוב בלי אבטחה כבר לא מספיק, ולכן הקמנו את CyberV. היום שתי החברות פועלות יחד, כי IT וסייבר צריכים להיות מנוהלים ביחד.</p>
+      <p class="sig">„אנו גאים להציע לכם את אותה רמת שירות ומקצועיות.”</p>
+      <div class="timeline">
+        <div><b>2000</b> · תחילת הדרך בניהול IT</div>
+        <div><b>2007</b> · הקמת פדנטק</div>
+        <div><b>היום</b> · פדנטק + CyberV</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding-top:40px">
+  <div class="container">
+    <div class="contact reveal">
+      <div>
+        <span class="eyebrow">צור קשר</span>
+        <h2>רוצים לדעת איפה העסק שלכם <span class="grad-text">חשוף?</span></h2>
+        <p style="color:var(--muted)">השאירו פרטים ונחזור אליכם לשיחת ייעוץ ראשונית, בלי התחייבות.</p>
+        <div class="info">
+          <a href="tel:0524378884"><i>📞</i>052-4378884</a>
+          <a href="mailto:amichai@zelig.co.il"><i>✉️</i>amichai@zelig.co.il</a>
+          <div><i>📍</i>אבני חושן 28, מודיעין</div>
+          <div><i>🕘</i>א׳-ה׳: 09:00 עד 18:00 · ו׳: 09:00 עד 12:00</div>
+          <a href="https://www.linkedin.com/in/amichai-zelig-4a71005/" target="_blank" rel="noopener"><i>in</i>LinkedIn</a>
+        </div>
+      </div>
+      <form id="form" novalidate>
+        <div class="row">
+          <div><label class="sr" for="f-name">שם מלא</label><input id="f-name" placeholder="שם מלא *" required></div>
+          <div><label class="sr" for="f-co">חברה</label><input id="f-co" placeholder="שם החברה"></div>
+        </div>
+        <div class="row">
+          <div><label class="sr" for="f-phone">טלפון</label><input id="f-phone" type="tel" placeholder="טלפון *" required></div>
+          <div><label class="sr" for="f-mail">אימייל</label><input id="f-mail" type="email" placeholder="אימייל"></div>
+        </div>
+        <label class="sr" for="f-sub">נושא הפנייה</label>
+        <select id="f-sub">
+          <option>ניהול מחשוב ותמיכה</option>
+          <option>סייבר ואבטחת מידע</option>
+          <option>CyberDays</option>
+          <option>CISO / DPO כשירות</option>
+          <option>אחר</option>
+        </select>
+        <label class="sr" for="f-msg">הודעה</label>
+        <textarea id="f-msg" placeholder="ספרו לנו בקצרה על העסק ועל מה שאתם צריכים"></textarea>
+        <button class="btn btn-primary" type="submit" style="justify-content:center">שליחה בוואטסאפ</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container foot">
+    <div class="logo" style="font-size:1.1rem"><span class="logo-mark" style="width:32px;height:32px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg></span>פדנטק · ניהול מחשוב וסייבר לעסקים</div>
+    <div>© <span id="yr"></span> Pedantech &amp; CyberV · כל הזכויות שמורות · <a href="#">הצהרת נגישות</a> · <a href="#">מדיניות פרטיות</a></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/972524378884" target="_blank" rel="noopener" aria-label="שלחו הודעה בוואטסאפ">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-.9 1.2-.3.2-.6.1a8 8 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4 3.5 3.5 0 0 0-1.1 2.6 6 6 0 0 0 1.3 3.2 13.8 13.8 0 0 0 5.3 4.7c2 .8 2.7.9 3.7.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.3zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM12 0a12 12 0 0 0-10.3 18L0 24l6.2-1.6A12 12 0 1 0 12 0z"/></svg>
+</a>
+
+<script>
+// ---- data
+const ico = {
+  support:'<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-6h3zM3 19a2 2 0 0 0 2 2h1v-6H3z"/>',
+  cart:'<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>',
+  backup:'<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>',
+  db:'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.7-4 3-9 3s-9-1.3-9-3M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/>',
+  doc:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/>',
+  brief:'<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
+  shield:'<path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/>',
+  search:'<circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/>',
+  user:'<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+  lock:'<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+  grad:'<path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>',
+  bolt:'<path d="M13 2L3 14h9l-1 8 10-12h-9z"/>'
+};
+const services = [
+  {t:'it',i:'support',h:'ניהול IT ותמיכה שוטפת',p:'ניהול מלא של מערך המחשוב בעסק, בהתאמה לצרכים שלכם, עם מענה מהיר ושירות אישי.'},
+  {t:'it',i:'cart',h:'רכש וציוד מחשוב',p:'ייעוץ ורכש של מחשבים, שרתים, רשתות ורישוי, בלי התחייבות לספק מסוים, ורק מה שבאמת נחוץ.'},
+  {t:'it',i:'backup',h:'גיבוי והצפנה',p:'גיבוי שנבדק ועובד, הצפנה של מידע רגיש, ותוכנית התאוששות מסודרת למקרה תקלה.'},
+  {t:'it',i:'db',h:'פתרונות אחסון',p:'אחסון מקומי, בענן או משולב, שמתאים לגודל העסק, לתקציב ולדרישות האבטחה.'},
+  {t:'it',i:'doc',h:'ניהול מסמכים',p:'מערכות לניהול מסמכים ושיתוף ידע שמקלות על העבודה היומיומית ושומרות על המידע.'},
+  {t:'it',i:'brief',h:'ייעוץ למנהלים',p:'ליווי אסטרטגי של הנהלת העסק בתכנון מחשוב, תקציב IT ופרויקטים טכנולוגיים.'},
+  {t:'cy',i:'bolt',h:'CyberDays',p:'קמפיין סייבר מרוכז של יום אחד או כמה ימים, הכולל סקר, הדרכות, נהלים, גיבויים ואישורים.',b:'מומלץ'},
+  {t:'cy',i:'search',h:'סקר אתר וסקר סיכונים',p:'סריקת מערכות המחשוב, סביבת העבודה והנהלים, שמסתיימת בדוח מפורט ובהמלצות מתועדפות.'},
+  {t:'cy',i:'shield',h:'CISO as a Service',p:'מנהל אבטחת מידע במיקור חוץ, שמנהל את אבטחת המידע והגנת הפרטיות ודואג לעמידה ברגולציה.'},
+  {t:'cy',i:'lock',h:'DPO as a Service',p:'סקר פערים בהגנת הפרטיות, כתיבת מדיניות ונהלים, ניהול אירועים ודיווח לרשות להגנת הפרטיות.'},
+  {t:'cy',i:'grad',h:'הדרכות ומודעות עובדים',p:'הדרכות קבוצתיות ואישיות, מבדקי פישינג תקופתיים ולומדות מקוונות שנשלחות במייל.'},
+  {t:'cy',i:'user',h:'הטמעת מדיניות סייבר',p:'מדיניות אבטחה שנבנית לפי התקנים המובילים בארץ ובעולם, עם ליווי עד שכל הפערים נסגרים.'}
+];
+const clients = ['קרן פורטיסימו','RSIP Vision','וגה משאבי אנוש','כהן-יקולב','ראדויו','יוקידו','GK8','דטא ג׳י סי אי'];
+
+// ---- services render + tabs
+const grid = document.getElementById('svcGrid');
+function render(f){
+  grid.classList.remove('active'); void grid.offsetWidth;
+  grid.innerHTML = services.filter(s=>f==='all'||s.t===f).map(s=>`
+    <article class="svc ${s.t}">${s.b?`<span class="badge">${s.b}</span>`:''}
+      <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ico[s.i]}</svg></div>
+      <h4>${s.h}</h4><p>${s.p}</p></article>`).join('');
+  grid.classList.add('active');
+}
+render('all');
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-selected','false')});
+  b.classList.add('active');b.setAttribute('aria-selected','true');render(b.dataset.tab);
+}));
+
+// ---- clients marquee
+document.getElementById('track').innerHTML = [...clients,...clients].map(c=>`<div class="client">${c}</div>`).join('');
+
+// ---- typed text
+const phrases=['תמיכה שוטפת לעסק','גיבוי שבאמת עובד','CISO ו-DPO כשירות','עובדים שמזהים פישינג','עמידה בחוק הגנת הפרטיות'];
+const tEl=document.getElementById('typed');let pi=0,ci=0,del=false;
+(function type(){
+  const w=phrases[pi];tEl.textContent=w.slice(0,ci);
+  if(!del&&ci<w.length){ci++;setTimeout(type,70)}
+  else if(!del){del=true;setTimeout(type,1700)}
+  else if(ci>0){ci--;setTimeout(type,35)}
+  else{del=false;pi=(pi+1)%phrases.length;setTimeout(type,300)}
+})();
+
+// ---- header + menu
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>30),{passive:true});
+const mb=document.getElementById('menuBtn'),links=document.getElementById('links');
+mb.onclick=()=>{const o=links.classList.toggle('open');mb.setAttribute('aria-expanded',o)};
+links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
+
+// ---- reveal + counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;e.target.classList.add('in');
+  e.target.querySelectorAll('[data-count]').forEach(el=>{
+    const end=+el.dataset.count,start=end>1000?end-60:0,t0=performance.now();
+    (function tick(t){const k=Math.min((t-t0)/1600,1);el.textContent=Math.round(start+(end-start)*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(tick)})(t0);
+  });
+  io.unobserve(e.target);
+}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// ---- prefill subject from CTA
+document.querySelectorAll('[data-subject]').forEach(a=>a.addEventListener('click',()=>{document.getElementById('f-sub').value=a.dataset.subject}));
+
+// ---- form -> WhatsApp
+document.getElementById('form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const v=id=>document.getElementById(id).value.trim();
+  if(!v('f-name')||!v('f-phone')){alert('נא למלא שם וטלפון');return}
+  const msg=`שלום, אני ${v('f-name')}${v('f-co')?' מ'+v('f-co'):''}.\nנושא: ${v('f-sub')}\nטלפון: ${v('f-phone')}${v('f-mail')?'\nמייל: '+v('f-mail'):''}${v('f-msg')?'\n\n'+v('f-msg'):''}`;
+  window.open('https://wa.me/972524378884?text='+encodeURIComponent(msg),'_blank');
+});
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+// ---- network canvas
+const cv=document.getElementById('net'),ctx=cv.getContext('2d');let W,H,pts=[];
+function size(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;
+  const n=Math.min(90,Math.floor(W*H/16000));
+  pts=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,c:Math.random()<.5?'59,130,246':'20,224,176'}));}
+size();addEventListener('resize',size);
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function draw(){
+  ctx.clearRect(0,0,W,H);
+  for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+    ctx.fillStyle=`rgba(${p.c},.9)`;ctx.beginPath();ctx.arc(p.x,p.y,1.8,0,7);ctx.fill();}
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+    const a=pts[i],b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+    if(d<130){ctx.strokeStyle=`rgba(${a.c},${(1-d/130)*.35})`;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
+  if(!still)requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
